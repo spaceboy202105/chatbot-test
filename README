@@ -1,0 +1,73 @@
+# 聊天机器人框架设计
+
+根据你的需求，我设计了一个可扩展的聊天机器人后端框架，初始使用Gemini API但可轻松扩展到其他LLM。
+
+## 文件夹结构
+
+```
+chatbot/
+├── backend/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── api/
+│   │   │   ├── __init__.py
+│   │   │   ├── routes.py          # API路由和端点
+│   │   ├── core/
+│   │   │   ├── __init__.py
+│   │   │   ├── config.py          # 配置设置
+│   │   │   ├── dependencies.py     # 依赖项
+│   │   ├── llm/
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py            # LLM接口抽象基类
+│   │   │   ├── gemini.py          # Gemini实现
+│   │   │   ├── factory.py         # LLM工厂类
+│   │   ├── models/
+│   │   │   ├── __init__.py
+│   │   │   ├── chat.py            # 聊天数据模型
+│   │   │   ├── response.py        # API响应模型
+│   │   ├── services/
+│   │   │   ├── __init__.py
+│   │   │   ├── chat_service.py     # 聊天功能业务逻辑
+│   ├── main.py                    # 应用入口点
+│   ├── requirements.txt           # 依赖列表
+│   ├── .env.example               # 环境变量示例
+```
+
+## 各组件作用
+
+### 1. API层 (api/routes.py)
+- 定义聊天机器人的REST API端点
+- 处理HTTP请求和响应
+- 使用Pydantic模型验证输入数据
+
+### 2. LLM层 (llm/)
+- **base.py**: 为所有LLM API定义抽象基类，包含通用方法如`generate_response`
+- **gemini.py**: 使用基类实现Gemini API
+- **factory.py**: 工厂模式，根据配置创建适当的LLM实例
+
+### 3. 模型层 (models/)
+- 定义用于数据验证和序列化的Pydantic模型
+- 聊天消息、对话、系统提示等的模型
+
+### 4. 服务层 (services/)
+- 实现对话管理的业务逻辑
+- 处理对话上下文管理
+- 协调API层和LLM层之间的交互
+
+### 5. 核心 (core/)
+- 配置设置
+- FastAPI的依赖注入
+
+### 6. 主入口 (main.py)
+- 应用程序初始化
+- FastAPI实例创建和配置
+
+我计划使用FastAPI作为后端框架，它现代、快速，并提供良好的API文档、验证和异步操作支持。
+
+这个架构设计遵循以下原则：
+- 关注点分离：每个组件都有明确定义的职责
+- 依赖倒置：高层模块不依赖于低层模块，两者都依赖于抽象
+- 开闭原则：对扩展开放（添加新的LLM提供者）但对修改关闭
+- 单一职责原则：每个类只有一项工作
+
+这样设计的优势在于，添加新的LLM提供者只需创建一个继承基类LLM的新实现类，而不需要修改系统的其他部分。
