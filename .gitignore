@@ -1,0 +1,122 @@
+# 后端 Python 忽略项
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.venv
+venv/
+ENV/
+backend/venv/
+
+# 前端 Node.js 忽略项
+node_modules/
+frontend/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.pnp/
+.pnp.js
+coverage/
+frontend/build/
+frontend/dist/
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# 环境变量文件
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+backend/.env
+
+# 数据库
+*.sqlite
+*.sqlite3
+*.db
+
+# 日志文件
+*.log
+logs/
+log/
+
+# 临时文件
+tmp/
+temp/
+
+# 操作系统生成的文件
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# 编辑器/IDE 文件
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.sublime-workspace
+*.sublime-project
+.project
+.classpath
+.settings/
+.vim/
+*.iml
+*.ipr
+*.iws
+.factorypath
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Python 虚拟环境
+.python-version
+
+# 本地配置文件
+config.local.js
+config.local.py
+
+# 缓存目录
+.cache/
+.parcel-cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# 构建产物
+*.min.js
+*.min.css
+*.map
+
+# 其他
+.Trashes
+.Spotlight-V100
+.fseventsd

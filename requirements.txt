@@ -1,0 +1,11 @@
+fastapi==0.104.1
+uvicorn==0.23.2
+pydantic==2.4.2
+python-dotenv==1.0.0
+httpx==0.25.0
+openai==1.2.0
+google-ai-generativelanguage==0.4.0
+google-generativeai==0.3.1
+qianfan==0.0.5  # 百度千帆平台，用于接入Qwen模型
+anthropic==0.7.0  # 可选，用于支持Claude模型
+python-multipart==0.0.6
